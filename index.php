@@ -122,27 +122,7 @@
     </div>
   </div>
 
-  <script>
-    // Mueve la etiqueta del select si hay valor
-    const cursoSelect = document.getElementById('curso');
-    cursoSelect.addEventListener('change', function () {
-      if (cursoSelect.value) {
-        cursoSelect.classList.add('filled');
-      } else {
-        cursoSelect.classList.remove('filled');
-      }
-    });
-
-    // Validación del formulario
-    const formulario = document.getElementById('formulario');
-    formulario.addEventListener('submit', function (e) {
-      const checkbox = document.getElementById('acepto');
-      if (!checkbox.checked) {
-        e.preventDefault();
-        alert('Debes aceptar los Términos y Condiciones antes de enviar el formulario.');
-      }
-    });
-  </script>
+  
 
 </body>
 </html>
