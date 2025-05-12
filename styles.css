@@ -1,0 +1,310 @@
+/* * {
+    background-color: wheat;
+}
+
+h1 {
+    justify-content: center;
+    text-align: center;
+}
+
+input {
+    display: block;
+    margin: 10px;
+} */
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background: #121212;
+}
+
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -55%);
+    background: rgba(0, 0, 0, .9);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    border-radius: 10px;
+}
+
+.login-box p:first-child {
+    margin: 0 0 30px;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.user-box {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.user-box input,
+.user-box select {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.user-box select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    color: #fff;
+    scrollbar-width: thin;
+    scrollbar-color: #555 #121212;
+    padding: 10px 0;
+    position: relative;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23ffffff' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 6px;
+    padding-right: 30px;
+}
+
+.user-box select:focus ~ label,
+.user-box select.filled ~ label {
+    top: -15px;
+    left: 0;
+    color: #03e9f4;
+    font-size: 12px;
+    padding-top: 0;
+}
+
+.user-box select:focus {
+    background-color: transparent;
+}
+
+.user-box select option {
+    background-color: #121212;
+    color: #fff;
+}
+
+.user-box label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.3s ease all;
+}
+
+.user-box input:focus ~ label,
+.user-box input:valid ~ label,
+.user-box select:focus ~ label,
+.user-box select.filled ~ label {
+    top: -15px;
+    left: 0;
+    color: #03e9f4;
+    font-size: 12px;
+}
+
+.container {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 2;
+    margin: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #2dc38c;
+    box-shadow: 0 0 1px #cef1e4, inset 0 -2.5px 3px #62eab8,
+                inset 0 3px 3px rgba(0, 0, 0, 0.34);
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.checkmark:before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    display: none;
+}
+
+.container input:checked ~ .checkmark:before {
+    display: block;
+}
+
+.terms-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    font-size: 14px;
+    color: #fff;
+}
+
+.terms-text a {
+    font-size: 14px;
+    color: #2dc38c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.terms-text a:hover {
+    text-decoration: underline;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #1e1e1e;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    color: white;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.boton-animado {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.boton-animado:hover {
+    background: #fff;
+    color: #272727;
+    border-radius: 5px;
+}
+
+.boton-animado span {
+    position: absolute;
+    display: block;
+}
+
+.boton-animado span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #fff);
+    animation: btn-anim1 1.5s linear infinite;
+}
+
+.boton-animado span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #fff);
+    animation: btn-anim2 1.5s linear infinite;
+    animation-delay: .375s;
+}
+
+.boton-animado span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #fff);
+    animation: btn-anim3 1.5s linear infinite;
+    animation-delay: .75s;
+}
+
+.boton-animado span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #fff);
+    animation: btn-anim4 1.5s linear infinite;
+    animation-delay: 1.125s;
+}
+
+@keyframes btn-anim1 {
+    0% { left: -100%; }
+    50%,100% { left: 100%; }
+}
+
+@keyframes btn-anim2 {
+    0% { top: -100%; }
+    50%,100% { top: 100%; }
+}
+
+@keyframes btn-anim3 {
+    0% { right: -100%; }
+    50%,100% { right: 100%; }
+}
+
+@keyframes btn-anim4 {
+    0% { bottom: -100%; }
+    50%,100% { bottom: 100%; }
+}
