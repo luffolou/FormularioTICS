@@ -9,60 +9,20 @@
 
 ?>
 
-<!-- <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscripción Mini Torneo Brawl Stars</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-    <div class="container">
-        <h1>Inscripción Mini Torneo Brawl Stars</h1>
-        <form action="index.php" name="formulariosTICS" method="post" >
-
-            <label for="nombre">Nombre del Participante</label>
-                <input type="text" name="nombre" placeholder="Nombre y Apellido" required>
-
-            <label for="curso">Curso:</label>
-            <select name="curso" id="curso">
-                <option value="3°B">3°B</option>
-                <option value="3°D">3°D</option>
-                <option value="4°B">4°B</option>
-                <option value="4°D">4°D</option>
-            </select>
-
-            <label for="email">Correo Institucional</label>
-                <input type="email" name="email" placeholder="n.ap1ap2@intecorecoleta.cl" required>
-
-            <label for="tag">Tag Brawl Stars</label>
-                <input type="text" name="tag" placeholder="#ABC123" required>
-
-            <button type="submit" name="inscribirse">Inscribirse</button>
-            <button type="reset">Limpiar</button>
-        </form>
-        <p id="mensaje"></p>
-    </div>
-    <script src="script.js"></script> -->
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Formulario</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <div class="login-box">
     <p>Formulario juegos</p>
-    <form id="formulario">
+    <form action="index.php" id="formulario" name="formularioTICS" method="post">
 
       <!-- Nombre -->
       <div class="user-box">
@@ -82,16 +42,27 @@
         <label>Curso</label>
       </div>
 
-      <!-- Usuario Brawl Stars -->
-      <div class="user-box">
-        <input required name="brawlstars" type="text">
-        <label>Tag o usuario de Brawl Stars</label>
+      <!-- Usuario correo institucional -->
+    <div class="user-box">
+      <label for="correo" class="label-fijo">Correo electrónico</label>
+      <input required type="email" name="email" id="correo">
+    </div>
+
+    
+      <!-- Campo JUEGO (corregido el ide) -->
+    <div class="user-box">  
+        <select required name="juego" id="juego">
+            <option value="" disabled selected></option>
+            <option value="fifa">FIFA</option>
+            <option value="cs">Counter Strike 1.6</option>
+            <option value="brawlstars">Brawl Stars</option>
+        </select>
+        <label>Juego</label>
       </div>
 
-      <!-- Usuario COD Mobile -->
-      <div class="user-box">
-        <input required name="codmobile" type="text">
-        <label>Tag o usuario de COD Mobile</label>
+      <div class="user-box" id="codmobile-box">
+        <input required name="tag" type="text" id="codmobile-input">
+        <label>Tag o usuario de brawlstars</label>
       </div>
 
       <!-- Términos y condiciones -->
@@ -106,7 +77,7 @@
       </div>
       
       <!-- Botón -->
-      <button type="submit" class="boton-animado">
+      <button type="submit" class="boton-animado" name="inscribirse">
         <span></span><span></span><span></span><span></span>
         Enviar
       </button>
@@ -122,13 +93,11 @@
     </div>
   </div>
 
-  
+  <script src="script.js"></script>
 
 </body>
 </html>
 
-</body>
-</html>
 
 
 
@@ -140,9 +109,11 @@
         $nombre = $_POST ['nombre'];
         $curso = $_POST ['curso'];
         $email = $_POST ['email'];
+        $juego = $_POST ['juego'];
         $tag = $_POST ['tag'];
+        
 
-        $insertarDatos = "INSERT INTO inscripcion VALUES('$nombre', '$curso', '$email', '$tag', '')";
+        $insertarDatos = "INSERT INTO inscripcion VALUES('$nombre', '$curso', '$email','$juego', '$tag', '')";
 
         $ejecutarInsertar = mysqli_query ($enlace,$insertarDatos);
 
