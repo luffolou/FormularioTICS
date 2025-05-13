@@ -7,6 +7,9 @@
 
     $enlace = mysqli_connect ($servidor, $usuario, $clave, $baseDeDatos);
 
+    if (!$enlace) {
+    die("Error de conexión: " . mysqli_connect_error());
+    }
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +52,7 @@
     </div>
 
     
-      <!-- Campo JUEGO (corregido el ide) -->
+      <!-- Campo JUEGO (corregido el id) -->
     <div class="user-box">  
         <select required name="juego" id="juego">
             <option value="" disabled selected></option>
@@ -98,25 +101,33 @@
 </body>
 </html>
 
-
-
-
-
 <?php
 
-    if(isset($_POST['inscribirse'])) {
+    if (isset($_POST['inscribirse'])) {
+      $nombre = mysqli_real_escape_string($enlace, $_POST['nombre']);
+      $curso = mysqli_real_escape_string($enlace, $_POST['curso']);
+      $email = mysqli_real_escape_string($enlace, $_POST['email']);
+      $juego = mysqli_real_escape_string($enlace, $_POST['juego']);
+      $tag = ($juego === 'brawlstars') ? mysqli_real_escape_string($enlace, $_POST['tag']) : '';
 
-        $nombre = $_POST ['nombre'];
-        $curso = $_POST ['curso'];
-        $email = $_POST ['email'];
-        $juego = $_POST ['juego'];
-        $tag = $_POST ['tag'];
-        
+      $insertarDatos = "INSERT INTO inscripcion (nombre, curso, email, juego, tag, id) VALUES ('$nombre', '$curso', '$email', '$juego', '$tag', '')";
+      $ejecutarInsertar = mysqli_query($enlace, $insertarDatos);
 
-        $insertarDatos = "INSERT INTO inscripcion VALUES('$nombre', '$curso', '$email','$juego', '$tag', '')";
-
-        $ejecutarInsertar = mysqli_query ($enlace,$insertarDatos);
-
+      if (!$ejecutarInsertar) {
+        echo "Error en la consulta: " . mysqli_error($enlace);
+      } else {
+        echo "Datos insertados correctamente";
     }
+}
+/* 
+    if ($_POST) {
+      
+        $valor_seleccionado = $_POST['juego'];
+        echo "El valor seleccionado es: " . $valor_seleccionado;
+    } */
 
 ?>
+
+
+
+
